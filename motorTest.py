@@ -1,74 +1,42 @@
 from machine import Pin
 from time import sleep_ms, sleep
-
-vf = Pin(0, Pin.OUT)
-vb = Pin(4, Pin.OUT)
-
-hb = Pin(16, Pin.OUT) 
-hf = Pin(15, Pin.OUT)
+from lib.car import Car
 
 led = Pin(2, Pin.OUT)
+bil = Car()
+
+
 
 led.on()
-sleep_ms(300)
-led.off()
-sleep_ms(300)
-def coast() :
-    hf.off()
-    vf.off()
-    hb.off()
-    vb.off()
-    
-def frem() :
-    coast()
-    vf.on()
-    hf.on()
+while True:
+    sleep(5)
 
-def bak() :
-    coast()
-    vb.on()
-    hb.on()
+    #blinke
+    for _ in range(7):
+        led.on()
+        sleep_ms(300)
+        led.off()
+        sleep_ms(300)
 
-def drejH() :
-    coast()
-    vf.on()
 
-def drejV() :
-    coast()
-    hf.on()
+    bil.set_fart(100)
 
-def roterH() :
-    coast()
-    vf.on()
-    hb.on()
+    bil.frem()
+    sleep_ms(500)
 
-def roterV() :
-    coast()
-    hf.on()
-    vb.on()
+    bil.bak()
+    sleep_ms(500)
 
-frem()
-sleep_ms(500)
-coast()
-sleep_ms(500)
-bak()
-sleep_ms(500)
-coast()
-sleep_ms(500)
-drejH()
-sleep_ms(500)
-coast()
-sleep_ms(500)
-drejV()
-sleep_ms(500)
-coast()
-sleep_ms(500)
-roterH()
-sleep_ms(500)
-coast()
-sleep_ms(500)
-roterV()
-sleep_ms(500)
-coast()
-sleep_ms(500)
-coast()
+    bil.drejH()
+    sleep_ms(500)
+
+    bil.drejV()
+    sleep_ms(500)
+
+    bil.roterH()
+    sleep_ms(1000)
+
+    bil.roterV()
+    sleep_ms(1000)
+
+    bil.coast()
