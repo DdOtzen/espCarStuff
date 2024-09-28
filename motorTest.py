@@ -69,3 +69,10 @@ for _ in [8]:
     
     print('coast')
     bil.coast()
+    
+    
+def foo( dd = 'default', ff=2):
+    print(dd, nl='')
+    
+foo( ff=4 )
+

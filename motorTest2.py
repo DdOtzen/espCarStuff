@@ -49,10 +49,12 @@ led.off()
 sleep_ms(300)
 
 while True :
+    led.on()
     frem()
     sleep_ms(500)
     bak()
     sleep_ms(500)
+    led.off()
     drejH()
     sleep_ms(500)
     drejV()
